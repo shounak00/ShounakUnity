@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Shounak — Unity Lead / Simulation & XR Engineer</title>
+  <meta name="description" content="Md. Asafuddaula Sobahani Shounak — Senior Unity Developer & Team Lead. Medical Simulation, Digital Twins, XR, ECS/DOTS, Android, .NET/IIS, xAPI/LRS."/>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+
+<body data-theme="itachi">
+  <!-- FX Layers -->
+  <canvas id="fx"></canvas>
+  <div class="bgAurora"></div>
+  <div class="warp" id="warp" aria-hidden="true"></div>
+  <div class="cursorGlow" id="cursorGlow"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav__inner">
+      <button class="brand magnetic" data-nav="home" type="button">
+        <span class="brand__dot"></span>
+        <span>SHOUNAK</span>
+      </button>
+
+      <nav class="nav__links">
+        <button class="navLink magnetic" data-nav="home" type="button">Home</button>
+        <button class="navLink magnetic" data-nav="projects" type="button">Projects</button>
+        <button class="navLink magnetic" data-nav="resume" type="button">Resume</button>
+        <button class="navLink magnetic" data-nav="reels" type="button">Reels</button>
+        <button class="navLink magnetic" data-nav="updates" type="button">Articles</button>
+        <button class="btn btn--ghost magnetic" data-nav="contact" type="button">Contact</button>
+
+        <!-- icon-only sound -->
+        <button class="iconOnly magnetic" id="soundToggle" aria-label="Toggle sound" title="Sound" type="button">
+          <span id="soundIcon">🔊</span>
+        </button>
+      </nav>
+
+      <button class="nav__menu magnetic" id="menuBtn" type="button">☰</button>
+    </div>
+
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <button class="navLink" data-nav="home" type="button">Home</button>
+      <button class="navLink" data-nav="projects" type="button">Projects</button>
+      <button class="navLink" data-nav="resume" type="button">Resume</button>
+      <button class="navLink" data-nav="reels" type="button">Reels</button>
+      <button class="navLink" data-nav="updates" type="button">Articles</button>
+      <button class="navLink" data-nav="contact" type="button">Contact</button>
+
+      <button class="iconOnly" id="soundToggleMobile" aria-label="Toggle sound" title="Sound" type="button">
+        <span id="soundIconMobile">🔊</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 2D PORTAL RAIL -->
+  <main class="stage" id="stage">
+    <div class="track" id="track">
+
+      <!-- PAGE 0: HOME -->
+      <section class="page container" id="home">
+        <div class="hero">
+          <div class="hero__grid">
+
+            <!-- LEFT -->
+            <div class="heroLeft">
+              
+
+              <h1 class="glitch reveal" data-text="MD. ASAFUDDAULA SOBAHANI SHOUNAK">
+                MD. ASAFUDDAULA SOBAHANI SHOUNAK
+              </h1>
+            
+              <br>
+              <br>
+
+              <div class="kicker reveal">Senior Unity Developer & Team Lead</div>
+
+              <h2 class="titleLine reveal">
+                Medical Simulation • Digital Twins • XR (VR/AR) • ECS/DOTS • Simulation Authoring • Workflow Automation
+              </h2>
+
+              <p class="lead reveal">
+                I build high-performance Unity applications across medical simulation, digital twins, and XR training systems —
+                focused on scalable ECS/DOTS architectures, authoring workflows, and production-ready optimization.
+                <strong>Super anime fan</strong> (Naruto vibe). Minato is my favorite character.
+              </p>
+
+              <div class="chips reveal">
+                <span>ECS/DOTS</span>
+                <span>Unity XR</span>
+                <span>Meta Quest 2/3</span>
+                <span>Android Shipping</span>
+                <span>.NET / IIS</span>
+                <span>xAPI + LRS</span>
+              </div>
+
+              <div class="cta reveal">
+                <button class="btn magnetic" data-nav="projects" type="button">Teleport → Projects</button>
+                <button class="btn btn--ghost magnetic" data-nav="resume" type="button">Teleport → Resume</button>
+                <button class="btn btn--ghost magnetic" data-nav="reels" type="button">Teleport → Reels</button>
+              </div>
+
+              <div class="contactRow reveal">
+                <a class="iconBtn magnetic" href="mailto:shounak00@gmail.com" title="Email">
+                  <img src="./email.png" alt="Email"/>
+                  <span>shounak00@gmail.com</span>
+                </a>
+                <a class="iconBtn magnetic" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/shounak00" title="LinkedIn">
+                  <img src="./linkedin.png" alt="LinkedIn"/>
+                  <span>linkedin.com/in/shounak00</span>
+                </a>
+              </div>
+
+              <!-- Latest posts preview -->
+              <div class="latestWrap reveal">
+                <div class="latestHead">
+                  <h3>Latest Updates</h3>
+                  <a class="pill magnetic" href="./blog.html">See all →</a>
+
+                </div>
+                <div class="latestGrid" id="latestGrid"></div>
+              </div>
+
+              <div class="marqueeWrap reveal">
+                <div class="marquee">
+                  <div class="marquee__track">
+                    <span>Unity • ECS/DOTS • XR • Medical Simulation • Digital Twins • Authoring Tools • Workflow Automation • Android Shipping • .NET/IIS • xAPI • LRS • Performance</span>
+                    <span>Unity • ECS/DOTS • XR • Medical Simulation • Digital Twins • Authoring Tools • Workflow Automation • Android Shipping • .NET/IIS • xAPI • LRS • Performance</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: PORTRAIT AREA (FORCED) -->
+            <aside class="heroRight">
+              <div class="portraitCard magnetic">
+                <div class="portraitTop">
+                  <div class="rankBadge">Senior Unity Dev</div>
+                  <div class="sharingan"> Dev</div>
+                </div>
+
+                <img class="portrait" src="./shounak.jpg" alt="Md. Asafuddaula Sobahani Shounak" id="portraitImg"/>
+
+                <div class="portraitFallback" id="portraitFallback" aria-hidden="true">
+                  <div class="pfTitle">Portrait not found</div>
+                  <div class="pfText">
+                    Check filename + location.<br/>
+                    Must be: <code>./shounak.jpg</code> beside <code>index.html</code>
+                  </div>
+                </div>
+
+                <div class="portraitMeta">
+                  <div class="portraitName">Md. Asafuddaula Sobahani Shounak</div>
+                  <div class="portraitRole">Unity Lead • Simulation Engineer • XR Engineer</div>
+                  <div class="portraitTags">ECS/DOTS • Tooling • Shipping • Optimization</div>
+                </div>
+
+                <div class="portraitBtns">
+                  <button class="pill magnetic" data-open="sit" type="button">SIT: CPREP</button>
+                  <button class="pill magnetic" data-open="jlg" type="button">JLG: Digital Twin </button>
+                  <button class="pill magnetic" data-open="bsbd" type="button">BSBD</button>
+                  <button class="pill magnetic" data-open="bsbd" type="button">The Rem</button>
+                  <button class="pill magnetic" data-open="bsbd" type="button">Trench Warfare</button>
+                </div>
+              </div>
+
+              <!--
+              <div class="hint">
+                Scroll = portal travel (right → left → down → left). Nav teleports too.
+              </div> -->
+            </aside>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 1: PROJECTS -->
+      <section class="page container" id="projects">
+        <div class="section__head">
+          <h2 class="reveal">Key Projects</h2>
+          <p class="reveal">Click cards for details. NDA projects show NoNDA.png.</p>
+        </div>
+
+        <div class="grid3">
+          <article class="card reveal magnetic nda" data-open="sit">
+            <div class="card__top">
+              <h3>SIT CPREP — Clinical Preparedness</h3><span class="tag">NDA</span>
+            </div>
+            <div class="thumb">
+              <img src="./Images/NoNDA.png" alt="NDA Protected"/>
+            </div>
+            <ul>
+              <li>Scenario execution + assessment systems</li>
+              <li>Authoring workflows for SMEs</li>
+              <li>xAPI → LRS/LMS analytics</li>
+            </ul>
+          </article>
+
+          <article class="card reveal magnetic nda" data-open="jlg">
+            <div class="card__top">
+              <h3>JLG Crane — Digital Twin (VR)</h3><span class="tag">NDA</span>
+            </div>
+            <div class="thumb">
+              <img src="./Images/NoNDA.png" alt="NDA Protected"/>
+            </div>
+            <ul>
+              <li>Interaction + constraints + validation</li>
+              <li>Physics coordination + safety logic</li>
+              <li>VR performance tuning</li>
+            </ul>
+          </article>
+
+          <article class="card reveal magnetic" data-open="bsbd">
+            <div class="card__top">
+              <h3>Bus Simulator BD (BSBD)</h3><span class="tag">2M+ Downloads</span>
+            </div>
+            <ul>
+              <li>Android build + release management</li>
+              <li>Low-end optimization</li>
+              <li>Performance stability improvements</li>
+            </ul>
+          </article>
+
+          <article class="card reveal magnetic" data-open="trench">
+            <div class="card__top">
+              <h3>Trench Warfare</h3><span class="tag">1M+ Downloads</span>
+            </div>
+            <ul><li>AI-driven gameplay systems</li><li>Optimization + stability</li></ul>
+          </article>
+
+          <article class="card reveal magnetic" data-open="rem">
+            <div class="card__top">
+              <h3>The Rem</h3><span class="tag">500K+ Downloads</span>
+            </div>
+            <ul><li>Modular system architecture</li><li>Performance tuning</li></ul>
+          </article>
+
+          <article class="card reveal magnetic" data-open="alex">
+            <div class="card__top">
+              <h3>AlexanderBall (Steam)</h3><span class="tag">PC</span>
+            </div>
+            <ul><li>Optimized pathfinding</li><li>Large-scale simulation performance</li></ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- PAGE 2: RESUME -->
+      <section class="page container" id="resume">
+        <div class="section__head">
+          <h2 class="reveal">Resume</h2>
+          <p class="reveal">Full professional details. NDA respected for demos.</p>
+        </div>
+
+        <div class="resumeCard reveal">
+          <!-- Your resume content (kept from previous version) -->
+          <div class="resumeHeader">
+            <div>
+              <h3>MD. ASAFUDDAULA SOBAHANI SHOUNAK</h3>
+              <div class="resumeSub">Senior Unity Developer & Team Lead</div>
+              <div class="resumeSub2">Medical Simulation | Digital Twins | XR (VR/AR) | ECS | Simulation Authoring & Workflow Automation</div>
+            </div>
+            <div class="resumeMeta">
+              <div>Dhaka, Bangladesh</div>
+              <div>Email: shounak00@gmail.com</div>
+              <div>Phone: +880-1308542586</div>
+              <div>LinkedIn: linkedin.com/in/shounak00</div>
+              <div>GitHub: github.com/shounak00</div>
+              <div>Portfolio: your-portfolio-link.com</div>
+            </div>
+          </div>
+
+          <hr class="hr"/>
+
+          <h4>PROFESSIONAL SUMMARY</h4>
+          <p>
+            Senior Unity Developer and Team Lead with 5+ years of professional experience delivering high-performance Unity applications across medical simulation,
+            digital twins, and XR training systems. Expert in Unity ECS (DOTS), data-oriented design, and simulation authoring & workflow automation.
+            Proven ability to lead engineering teams, architect scalable systems, and ship enterprise healthcare solutions and consumer products with millions of users.
+          </p>
+
+          <h4>CORE TECHNICAL SKILLS</h4>
+          <ul class="cols2">
+            <li>Unity Engine (URP, XR Toolkit, Addressables)</li>
+            <li>Unity ECS / DOTS, Data-Oriented Architecture</li>
+            <li>Simulation Authoring & Workflow Automation</li>
+            <li>Scalable Content Production Tooling</li>
+            <li>C#, .NET / ASP.NET Core, JavaScript</li>
+            <li>Backend Integration, REST APIs, xAPI</li>
+            <li>.NET Hosting on IIS (Windows Server)</li>
+            <li>Android Build & Release Management (Unity)</li>
+            <li>VR/AR Development (Meta Quest 2/3)</li>
+            <li>Medical Simulation & Scenario-Based Training</li>
+            <li>Digital Twins & Real-Time Control Systems</li>
+            <li>LRS / LMS Integration</li>
+            <li>Performance Optimization (CPU, GPU, Memory)</li>
+            <li>Multiplayer & Scalable Systems</li>
+            <li>Git, Jira, Agile/Scrum</li>
+            <li>Unreal Engine (Working Knowledge)</li>
+          </ul>
+
+          <h4>PROFESSIONAL EXPERIENCE</h4>
+          <div class="exp">
+            <div class="expHead">
+              <strong>Senior Unity Developer (Lead)</strong>
+              <span>Talent Pro | June 2024 – Present</span>
+            </div>
+            <ul>
+              <li>Lead Unity development for enterprise-grade medical simulation and XR training platforms.</li>
+              <li>Architect ECS-driven systems for scalable scenario execution, assessment logic, and performance-critical workflows.</li>
+              <li>Design simulation authoring and workflow automation tools enabling non-technical SMEs to create training scenarios.</li>
+              <li>Develop VR medical training applications using Meta Quest 3.</li>
+              <li>Integrate xAPI and Learning Record Stores (LRS) for learner analytics and performance tracking.</li>
+              <li>Mentor Unity engineers and define engineering standards.</li>
+            </ul>
+          </div>
+
+          <div class="exp">
+            <div class="expHead">
+              <strong>Senior Unity Developer</strong>
+              <span>Ghost Interactive | February 2022 – May 2024</span>
+            </div>
+            <ul>
+              <li>Shipped Unity products with a combined 1M+ downloads.</li>
+              <li>Designed ECS-inspired architectures for gameplay and simulation systems.</li>
+              <li>Built internal development tools to improve content production and QA efficiency.</li>
+              <li>Optimized rendering, physics, and memory usage across mobile and PC platforms.</li>
+            </ul>
+          </div>
+
+          <div class="exp">
+            <div class="expHead">
+              <strong>Junior Software Engineer (Game)</strong>
+              <span>Toontech (Games4Life) | March 2021 – January 2022</span>
+            </div>
+          </div>
+
+          <div class="exp">
+            <div class="expHead">
+              <strong>Junior Game Developer</strong>
+              <span>Technomagic Pvt Ltd | September 2020 – February 2021</span>
+            </div>
+          </div>
+
+          <h4>EDUCATION</h4>
+          <p><strong>B.Sc. in Computer Science & Engineering</strong> — Jahangirnagar University, Bangladesh<br/>
+            CGPA: 3.17 out of 4.00</p>
+
+          <h4>CERTIFICATIONS</h4>
+          <ul>
+            <li>Game Design and Development Specialization — Michigan State University — Credential ID: XU38U23UKCJ7</li>
+            <li>Game Design and Development Capstone — Michigan State University — Credential ID: 6JK5C8D2GZJE</li>
+            <li>Game Development for Modern Platforms — Michigan State University — Credential ID: 29R5UU7GYP9K</li>
+            <li>Business of Games and Entrepreneurship — Michigan State University — Credential ID: FF3ZL86FX83H</li>
+            <li>Principles of Game Design — Michigan State University — Credential ID: PYETUSBA38N7</li>
+            <li>Introduction to Game Development — Michigan State University — Credential ID: VDRKD7ZZETCQ</li>
+            <li>Introduction to C# Programming and Unity — University of Colorado — Credential ID: HJPFVFPQYFBU</li>
+            <li>More C# Programming and Unity — University of Colorado — Credential ID: CFHP556LERX8</li>
+            <li>Unity and C# Basics — Meta — Credential ID: KHFYXRKUGYL3</li>
+            <li>Introduction to Generative AI — Google — Credential ID: 8336900</li>
+            <li>Training for Mobile Application Developer (iOS) — ICT Division, Bangladesh — Credential ID: L1A-B-30-0-37</li>
+          </ul>
+
+          <h4>DECLARATION / ACKNOWLEDGEMENT</h4>
+          <p>I hereby declare that all the information provided above is true, complete, and accurate to the best of my knowledge and belief.</p>
+        </div>
+      </section>
+
+      <!-- PAGE 3: REELS -->
+      <section class="page container" id="reels">
+        <div class="section__head">
+          <h2 class="reveal">Games Demo Reels</h2>
+          <p class="reveal">These reels are for games (not medical / digital twin).</p>
+        </div>
+        <div class="videogrid reveal" id="videoGrid"></div>
+      </section>
+
+      <!-- PAGE 4: UPDATES -->
+      <section class="page container" id="updates">
+        <div class="section__head">
+          <h2 class="reveal">Articles</h2>
+          <!-- <p class="reveal">Write posts in <code>posts.json</code>. Latest also appears on Home.</p> -->
+           <a href="./blog.html" class="btn magnetic reveal" style="margin-top:14px; display:inline-flex;">
+  Read Articles →
+</a>
+<br>
+<br>
+
+        </div>
+        <div class="updatesGrid reveal" id="updatesGrid"></div>
+      </section>
+
+      <!-- PAGE 5: CONTACT -->
+      <section class="page container" id="contact">
+        <div class="section__head">
+          <h2 class="reveal">Contact</h2>
+          <p class="reveal">Open to Unity Lead / Simulation Engineer / XR Engineer roles (EU / Singapore / NZ / Ireland).</p>
+        </div>
+
+        <div class="grid2">
+  <div class="card reveal">
+    <h3 class="cardTitleIcon">
+      <img src="./email.png" alt="Email" />
+      <span>Email</span>
+    </h3>
+    <p class="small">Best for serious opportunities.</p>
+    <a class="btn magnetic" href="mailto:shounak00@gmail.com?subject=Unity%20Lead%20/%20XR%20/%20Simulation%20Role">Email Me</a>
+  </div>
+
+  <div class="card reveal">
+    <h3 class="cardTitleIcon">
+      <img src="./linkedin.png" alt="LinkedIn" />
+      <span>LinkedIn</span>
+    </h3>
+    <p class="small">Fastest for recruiters.</p>
+    <a class="btn btn--ghost magnetic" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/shounak00">Open LinkedIn</a>
+  </div>
+</div>
+
+
+        <footer class="footer">
+          <span>© <span id="year"></span> Md. Asafuddaula Sobahani Shounak • All Rights Reserved</span>
+        </footer>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__bg" data-close="1"></div>
+    <div class="modal__panel">
+      <button class="modal__x magnetic" data-close="1" type="button">✕</button>
+      <div id="modalBody" class="modal__body"></div>
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="sClick" preload="auto" src="./audio/click.mp3"></audio>
+  <audio id="sPortal" preload="auto" src="./audio/portal.mp3"></audio>
+  <audio id="sHover" preload="auto" src="./audio/hover.mp3"></audio>
+
+  <script src="./app.js"></script>
+</body>
+</html>

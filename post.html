@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Post — Shounak</title>
+  <meta name="description" content="Article by Md. Asafuddaula Sobahani Shounak." />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <canvas id="fx"></canvas>
+  <div class="bg"></div>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="./index.html"><span class="brand__dot"></span>HOME</a>
+
+      <nav class="nav__links">
+        <a href="./index.html#projects">Projects</a>
+        <a href="./reels.html">Reels</a>
+        <a href="./blog.html">Updates</a>
+        <a class="btn btn--ghost magnetic" href="./index.html#contact">Contact</a>
+      </nav>
+
+      <button class="nav__menu" id="menuBtn">☰</button>
+    </div>
+
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <a href="./index.html">Home</a>
+      <a href="./blog.html">Updates</a>
+      <a href="./reels.html">Reels</a>
+      <a href="./index.html#contact">Contact</a>
+    </div>
+  </header>
+
+  <main class="wrap container">
+    <section class="section">
+      <div class="card reveal" id="postHeader">
+        <div class="postMeta" id="postMeta">Loading…</div>
+        <h2 id="postTitle" style="margin:10px 0 6px;">Loading…</h2>
+        <p class="small" id="postExcerpt"></p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+          <a class="btn btn--ghost magnetic" href="./blog.html">← Back to Updates</a>
+          <a class="btn btn--ghost magnetic" href="./index.html">Home</a>
+        </div>
+      </div>
+
+      <article class="card reveal" id="postBody" style="margin-top:14px;">
+        Loading post…
+      </article>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Md. Asafuddaula Sobahani Shounak</span>
+      <span>•</span>
+      <a href="./index.html">Home</a>
+      <span>•</span>
+      <a href="./blog.html">Updates</a>
+    </footer>
+  </main>
+
+  <script src="./post.js"></script>
+</body>
+</html>

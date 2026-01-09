@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reels — Shounak</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <canvas id="fx"></canvas>
+  <div class="bgAurora"></div>
+  <div class="cursorGlow" id="cursorGlow"></div>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="./index.html"><span class="brand__dot"></span>HOME</a>
+      <nav class="nav__links">
+        <a href="./index.html#projects">Projects</a>
+        <a href="./blog.html">Updates</a>
+        <a class="btn btn--ghost magnetic" href="./index.html#contact">Contact</a>
+      </nav>
+      <button class="nav__menu" id="menuBtn">☰</button>
+    </div>
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <a href="./index.html">Home</a>
+      <a href="./index.html#projects">Projects</a>
+      <a href="./blog.html">Updates</a>
+      <a href="./index.html#contact">Contact</a>
+    </div>
+  </header>
+
+  <main class="wrap container">
+    <section class="section">
+      <div class="section__head reveal">
+        <h2>Demo Reels</h2>
+        <p>Full reels and walkthroughs.</p>
+      </div>
+
+      <div class="videogrid reveal" id="reelsGrid"></div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Md. Asafuddaula Sobahani Shounak</span>
+      <span>•</span>
+      <a href="./index.html">Home</a>
+    </footer>
+  </main>
+
+  <script src="./reels.js"></script>
+</body>
+</html>

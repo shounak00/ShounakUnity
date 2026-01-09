@@ -1,0 +1,18 @@
+[
+  {
+    "id": "welcome-what-i-build-and-why",
+    "title": "Welcome — What I Build and Why",
+    "date": "2026-01-10",
+    "tags": ["Intro", "Unity", "Medical Simulation", "XR", "ECS/DOTS", "Workflow Automation"],
+    "excerpt": "A quick intro to what I build: medical simulation, digital twins, XR training, ECS/DOTS architecture, and workflow automation — plus what you’ll see in Updates.",
+    "content": "# Welcome — What I Build and Why\n\nI’m **Md. Asafuddaula Sobahani Shounak**, a **Senior Unity Developer & Team Lead** focused on:\n\n- **Medical Simulation**\n- **Digital Twins**\n- **XR (VR/AR)** training systems\n- **ECS/DOTS** and scalable architecture\n- **Workflow automation** (authoring tools that unblock content production)\n- Shipping on real constraints (**Android**, performance, stability)\n\n## What you’ll see here\n\nThis “Updates” section is where I’ll post:\n\n- Devlogs on simulation systems and architecture\n- XR implementation lessons (Meta Quest, performance, UX)\n- Tooling approaches that scale content pipelines\n- Notes on production shipping and optimization\n\nIf you’re hiring for **Unity Lead / Simulation Engineer / XR Engineer** roles (EU / Singapore / NZ / Ireland), feel free to reach out.\n\n- Email: **shounak00@gmail.com**\n- LinkedIn: https://www.linkedin.com/in/shounak00\n"
+  },
+  {
+    "id": "sit-cprep-devlog-scalable-medical-simulation-workflows",
+    "title": "SIT CPREP Devlog — Building Scalable Medical Simulation Workflows",
+    "date": "2026-01-10",
+    "tags": ["Devlog", "Medical Simulation", "Authoring Tools", "Workflow Automation", "xAPI", "LRS", "NDA-safe"],
+    "excerpt": "NDA-safe engineering patterns behind scalable medical simulation: scenario execution framework, authoring workflows for SMEs, and analytics via xAPI → LRS.",
+    "content": "# SIT CPREP Devlog — Building Scalable Medical Simulation Workflows\n\nThis write-up is **NDA-safe** and focuses on engineering patterns rather than proprietary content.\n\n## The problem\n\nHealthcare training needs:\n\n- repeatable **scenario execution**\n- measurable performance (**assessment + analytics**)\n- content growth without engineering bottlenecks (**authoring workflows**)\n\n## My approach\n\n### 1) Scenario execution framework\nI approached scenarios like a **state machine / system graph**:\n\n- consistent entry/exit states\n- explicit triggers and conditions\n- assessment rules as data-driven modules\n- deterministic behavior where possible\n\n### 2) Authoring & workflow automation\nTo scale content production, I focused on tools that allow non-engineers to contribute:\n\n- structured templates for scenario creation\n- validation rules to prevent broken content\n- automation to reduce manual setup and QA effort\n\n### 3) Analytics-ready training\nTo support reporting and progress tracking:\n\n- key user actions emit **xAPI** statements\n- statements flow to an **LRS**\n- data feeds dashboards / LMS reporting\n\n## What I’d highlight for recruiters\n\n- **Systems architecture** for simulation execution\n- **Tooling that scales production**\n- **Telemetry/analytics integration (xAPI + LRS)**\n- A mindset that optimizes both **runtime performance** and **team workflow**\n\nIf you want a deeper technical breakdown (architecture diagram style), I can publish a follow-up post.\n"
+  }
+]

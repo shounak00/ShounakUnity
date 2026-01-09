@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Updates — Shounak</title>
+  <meta name="description" content="Updates, devlogs, and articles by Md. Asafuddaula Sobahani Shounak." />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Critical: prevent FX layers from blocking clicks -->
+  <style>
+    #fx, .bg, .bgAurora, .warp, .cursorGlow { pointer-events: none; }
+    /* Ensure content sits above FX */
+    .pageShell { position: relative; z-index: 2; }
+    /* Breathing space */
+    .wrap { padding: 92px 18px 40px; } /* 72px nav + 20px */
+    /* Post grid spacing if your styles.css doesn't define it */
+    .postGrid { display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; }
+    @media (max-width: 980px){ .postGrid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+  <!-- FX Layers -->
+  <canvas id="fx"></canvas>
+  <div class="bgAurora"></div>
+  <div class="warp" id="warp" aria-hidden="true"></div>
+  <div class="cursorGlow" id="cursorGlow"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="./index.html">
+        <span class="brand__dot"></span>
+        <span>HOME</span>
+      </a>
+
+      <nav class="nav__links">
+        <a href="./index.html#projects">Projects</a>
+        <a href="./reels.html">Reels</a>
+        <a href="./blog.html" aria-current="page">Articles</a>
+        <a class="btn btn--ghost magnetic" href="./index.html#contact">Contact</a>
+      </nav>
+
+      <button class="nav__menu" id="menuBtn" type="button">☰</button>
+    </div>
+
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <a href="./index.html">Home</a>
+      <a href="./index.html#projects">Projects</a>
+      <a href="./reels.html">Reels</a>
+      <a href="./blog.html">Articles</a>
+      <a href="./index.html#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="wrap container pageShell">
+    <section class="section">
+      <div class="section__head reveal">
+        <h2>Articles</h2>
+        <p>Devlogs, technical breakdowns, and production notes.</p>
+      </div>
+
+      <div class="card reveal" style="margin-bottom:14px;">
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <input id="search" placeholder="Search posts (title, tags, excerpt)..." style="
+            flex:1; min-width:240px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.06);
+            color: rgba(255,255,255,.92);
+            outline: none;
+          "/>
+
+          <select id="tagFilter" style="
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.06);
+            color: rgba(255,255,255,.92);
+            outline: none;
+          ">
+            <option value="all">All tags</option>
+          </select>
+
+          <button id="sortBtn" class="btn btn--ghost magnetic" type="button">
+            Sort: Newest
+          </button>
+        </div>
+      </div>
+
+      <div class="postGrid reveal" id="postsGrid">
+        <div class="postCard">Loading posts…</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Md. Asafuddaula Sobahani Shounak</span>
+      <span>•</span>
+      <a href="./index.html">Home</a>
+      <span>•</span>
+      <a href="./reels.html">Reels</a>
+    </footer>
+  </main>
+
+  <!-- MODAL READER -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__bg" data-close="1"></div>
+    <div class="modal__panel">
+      <button class="modal__x magnetic" data-close="1" type="button">✕</button>
+      <div id="modalBody" class="modal__body"></div>
+    </div>
+  </div>
+
+  <script src="./blog.js"></script>
+</body>
+</html>
