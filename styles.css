@@ -28,6 +28,15 @@ body{
   overflow:hidden;
 }
 
+html, body { width: 100%; overflow-x: hidden; }
+
+/* iOS safe area padding */
+body{
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+
 /* FX */
 #fx{ position:fixed; inset:0; z-index:0; width:100%; height:100%; pointer-events:none; }
 .bgGrid{
@@ -562,4 +571,78 @@ body{
   .dock{ gap: 6px; padding: 8px 10px; }
   .dockItem{ min-width: 58px; }
   .loop-wrapper{ display:none; }
+}
+
+
+@media (max-width: 600px){
+  /* Keep your portal feel but allow vertical scroll inside app areas */
+  .pages{
+    inset: 64px 0 92px 0;     /* leave room for dock */
+    padding: 12px;
+  }
+
+  .page{
+    width: calc(100vw - 24px);
+  }
+
+  .pageCard{
+    padding: 14px;
+  }
+
+  /* Home becomes stacked + scrollable */
+  .homeGrid{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Make “home” card content scroll if it overflows */
+  .page[data-key="home"] .pageCard{
+    max-height: calc(100vh - 64px - 92px - 24px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Same idea for all pages (safe default) */
+  .pageCard{
+    max-height: calc(100vh - 64px - 92px - 24px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Dock: keep visible, smaller, no overflow */
+  .dock{
+    width: calc(100vw - 16px);
+    left: 8px;
+    transform: none;
+    justify-content: space-between;
+    gap: 4px;
+    padding: 8px 8px;
+    border-radius: 14px;
+  }
+  .dockItem{
+    min-width: 0;
+    padding: 6px 6px;
+  }
+  .dockIcon{
+    width: 26px;
+    height: 26px;
+  }
+  .dockLabel{
+    font-size: 10px;
+  }
+
+  /* Portrait image: reduce height so it doesn't dominate */
+  .portrait{
+    height: min(42vh, 320px);
+    object-position: 50% 18%;
+  }
+}
+
+
+@media (max-width: 600px){
+  .hud{
+    padding: 10px 12px;
+  }
+  .hud__name{ font-size: 16px; }
+  .hud__role{ font-size: 11px; }
 }
