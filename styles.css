@@ -367,26 +367,54 @@ body{
   box-shadow: var(--shadow);
 }
 
-/* kinetic css loader ring */
 .kineticRing{
-  position:absolute;
+  position: absolute;
   inset: -10px;
   border-radius: 999px;
-  background:
-    conic-gradient(
-      from 0deg,
-      rgba(0,0,0,0) 0deg,
-      rgba(0,0,0,.78) 22deg,
-      rgba(0,0,0,0) 42deg,
-      rgba(0,0,0,0) 90deg,
-      rgba(0,0,0,.64) 118deg,
-      rgba(0,0,0,0) 145deg,
-      rgba(0,0,0,0) 360deg
-    );
-  opacity:.68;
-  animation: kineticSpin 1.05s linear infinite;
-  mask: radial-gradient(closest-side, transparent 78%, #000 80%);
+  pointer-events: none;
+
+  /* rotate like before */
+  animation: kineticSpin 5.05s linear infinite;
+
+  /* remove gradient + mask */
+  background: none;
+  mask: none;
 }
+
+/* shared icon style */
+.kineticRing::before,
+.kineticRing::after,
+.kineticRing .kIcon{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 50px;
+  line-height: 1;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.22));
+  opacity: .95;
+
+  transform: translate(-50%, -50%) rotate(240deg) translateY(-270px) rotate(-240deg);
+}
+
+
+/* 🌀 at 0° (top) */
+.kineticRing::before{
+  content: "🌀";
+  transform: translate(-50%, -50%) rotate(0deg) translateY(-280px) rotate(0deg);
+}
+
+/* ⚡ at 120° */
+.kineticRing::after{
+  content: "⚡";
+  transform: translate(-50%, -50%) rotate(180deg) translateY(-280px) rotate(-180deg);
+}
+
+
+
+
+
+
+
 @keyframes kineticSpin{ to{ transform: rotate(360deg); } }
 
 /* small portal circle */
@@ -731,3 +759,5 @@ body{
     font-size: 11px;
   }
 }
+
+
