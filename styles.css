@@ -646,3 +646,88 @@ body{
   .hud__name{ font-size: 16px; }
   .hud__role{ font-size: 11px; }
 }
+
+/* =========================================================
+   PHONE PORTRAIT (<= 600px)
+   ========================================================= */
+@media (max-width: 600px){
+
+  /* prevent sideways scroll */
+  html, body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
+  /* pages container */
+  .pages{
+    inset: 64px 0 92px 0;   /* header + dock space */
+    padding: 12px;
+  }
+
+  /* page width fits phone */
+  .page{
+    width: calc(100vw - 24px);
+  }
+
+  /* ALL cards become internally scrollable */
+  .pageCard{
+    max-height: calc(100vh - 64px - 92px - 24px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Home layout stacks */
+  .homeGrid{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Reduce portrait dominance */
+  .portrait{
+    height: min(42vh, 320px);
+    object-position: 50% 18%;
+  }
+
+  /* Dock fits phone width */
+  .dock{
+    width: calc(100vw - 16px);
+    left: 8px;
+    transform: none;
+    justify-content: space-between;
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .dockItem{
+    min-width: 0;
+    padding: 6px;
+  }
+
+  .dockLabel{
+    font-size: 10px;
+  }
+
+  /* HUD text slightly smaller */
+  .hud__name{ font-size: 16px; }
+  .hud__role{ font-size: 11px; }
+}
+
+/* =========================================================
+   TABLETS / iPad (touch devices up to 1024px)
+   ========================================================= */
+@media (pointer: coarse) and (max-width: 1024px){
+
+  .page{
+    width: min(96vw, 1100px);
+  }
+
+  .pageCard{
+    max-height: calc(100vh - 64px - 92px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dockLabel{
+    font-size: 11px;
+  }
+}

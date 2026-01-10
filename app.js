@@ -1,3 +1,14 @@
+(function addDeviceClasses(){
+  const coarse = matchMedia("(pointer: coarse)").matches;
+  const w = Math.min(innerWidth, innerHeight); // stable for rotation
+  if (coarse) document.documentElement.classList.add("isTouch");
+
+  // classify roughly
+  if (coarse && w <= 600) document.documentElement.classList.add("isPhone");
+  else if (coarse && w <= 1024) document.documentElement.classList.add("isTablet");
+})();
+
+
 /* =========================================================
    SOUND
    ========================================================= */
@@ -369,6 +380,121 @@ window.addEventListener("wheel", (e) => {
   if (d > 0) portalTransition(idx + 1, +1);
   else portalTransition(idx - 1, -1);
 }, { passive: true });
+
+/* =========================================================
+   TOUCH SWIPE NAV (mobile/tablet) — safe
+   - Only activates when gesture starts on background (not inside pageCard/scrollCard/buttons/links)
+   - Does NOT hijack normal scrolling inside content
+   ========================================================= */
+
+const SWIPE = {
+  on: true,
+  minY: 56,          // minimum vertical movement in px
+  maxXRatio: 0.6,    // allow some horizontal, but keep it mostly vertical
+  edgeBlock: 10      // ignore tiny moves
+};
+
+let tStartY = 0, tStartX = 0, tLastY = 0, tLastX = 0;
+let tracking = false;
+let allowSwipe = false;
+
+function isInteractive(el){
+  return !!el.closest("a,button,input,select,textarea,[role='button'],iframe,.dock,.dockItem,.iconBtn,.btn");
+}
+
+/** Returns true if this element (or its ancestors) is a scroll container that can scroll vertically */
+function isInsideScrollable(el){
+  const sc = el.closest(".scrollCard, .pageCard, .blogBody, .win__body");
+  if(!sc) return false;
+  const canScroll = sc.scrollHeight - sc.clientHeight > 4;
+  return canScroll;
+}
+
+/** Only allow swipe nav if gesture starts on “background”, not on content */
+function canStartSwipeFrom(e){
+  const el = e.target;
+
+  // if user touched on interactive controls, don't swipe-nav
+  if (isInteractive(el)) return false;
+
+  // if touch starts inside scrollable content, don't swipe-nav (let scroll happen)
+  if (isInsideScrollable(el)) return false;
+
+  // if touch starts inside the circle zone (portal area), allow
+  if (el.closest("#circleZone")) return true;
+
+  // if touch starts on the pages stage but outside cards, allow
+  // (your pages container is centered; most empty background is outside cards)
+  if (el.closest(".pages") && !el.closest(".pageCard")) return true;
+
+  // if touch starts outside pages/cards entirely, allow
+  if (!el.closest(".pageCard") && !el.closest(".dock") && !el.closest(".hud")) return true;
+
+  return false;
+}
+
+window.addEventListener("touchstart", (e) => {
+  if (!SWIPE.on) return;
+  if (lock) return;
+
+  const t = e.touches[0];
+  tracking = true;
+  allowSwipe = canStartSwipeFrom(e);
+
+  tStartX = tLastX = t.clientX;
+  tStartY = tLastY = t.clientY;
+}, { passive: true });
+
+window.addEventListener("touchmove", (e) => {
+  if (!SWIPE.on) return;
+  if (!tracking) return;
+
+  const t = e.touches[0];
+  tLastX = t.clientX;
+  tLastY = t.clientY;
+
+  // If we are allowed to swipe-nav, prevent browser pull-to-refresh / rubber-band
+  // but ONLY once we see it’s a real swipe.
+  if (allowSwipe){
+    const dx = tLastX - tStartX;
+    const dy = tLastY - tStartY;
+    if (Math.abs(dy) > SWIPE.edgeBlock && Math.abs(dy) > Math.abs(dx)){
+      e.preventDefault();
+    }
+  }
+}, { passive: false });
+
+window.addEventListener("touchend", () => {
+  if (!SWIPE.on) return;
+  if (!tracking) return;
+
+  tracking = false;
+  if (!allowSwipe) return;
+  if (lock) return;
+
+  const dx = tLastX - tStartX;
+  const dy = tLastY - tStartY;
+
+  const absX = Math.abs(dx);
+  const absY = Math.abs(dy);
+
+  // Must be mostly vertical
+  if (absY < SWIPE.minY) return;
+  if (absX > absY * SWIPE.maxXRatio) return;
+
+  // If not in content mode, enter first
+  if (!inContentMode){
+    enterContentMode();
+    return;
+  }
+
+  // dy < 0 means swipe up → next page
+  if (dy < 0) portalTransition(idx + 1, +1);
+  else portalTransition(idx - 1, -1);
+
+  allowSwipe = false;
+}, { passive: true });
+
 
 // Jump support: index.html?p=projects
 (function jumpFromQuery(){
