@@ -465,13 +465,14 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap: 6px;
+  gap: 5px;
 }
 .circleHint__big{
   font-weight: 1100;
   letter-spacing: 2px;
-  font-size: clamp(12px, 2.2vw, 18px);
-  line-height: 1;
+  font-size: clamp(25px, 2.2vw, 18px);
+  font-style: bold;
+  line-height: 1.25;
 }
 .circleHint__small{
   color: var(--muted);
@@ -783,4 +784,128 @@ body{
   }
 }
 
+/* =========================================================
+   KOI ANIMATION INSIDE CIRCLE (SCOPED)
+   ========================================================= */
 
+/* container clipped to the circle */
+.koiInCircle{
+  position: absolute;
+  inset: 30px;                 /* distance from ring border */
+  border-radius: 999px;
+  overflow: hidden;            /* clip inside circle */
+  pointer-events: none;
+  z-index: 3;                  /* behind innerPortal/hint */
+  opacity: .55;
+
+  /* knobs */
+  --coilSize: 10px;            /* koi thickness */
+  --delayCount: 40ms;          /* body spacing */
+  --koiGap: 0px;              /* distance between the two koi */
+}
+
+/* each fish fills the container */
+.koiFish{
+  position: absolute;
+  inset: 0;
+}
+
+/* mirrored + offset second koi */
+.koiFishB{
+  transform: scale(-1, 1) translateX(var(--koiGap));
+}
+
+/* each body segment */
+.koiFish .koiCoil{
+  position: absolute;
+  width: var(--coilSize);
+  height: var(--coilSize);
+  border-radius: 999px;
+
+  top: 0%;
+  left: 50%;
+  margin-left: calc(var(--coilSize) / -2);
+  margin-top: calc(var(--coilSize) / -2);
+
+  /* monochrome palette */
+  background-color: rgba(255, 0, 0, 0.85);
+  box-shadow: calc(var(--coilSize) / -2) calc(var(--coilSize) / -10) 0 rgba(255,255,255,.75) inset;
+
+  /* follow path */
+  offset-path: path("M11.7692 229.5C14.552 200.052 7.51901 171.858 -42.8757 170.644C-105.869 169.128 -131.294 76.612 -101.695 51.5872C-72.0955 26.5625 -24.6607 -50.7867 70.5883 51.5872C165.837 153.961 27.7073 131.211 33.0199 183.157C38.3326 235.102 90.3211 195.669 139.274 223.727C188.226 251.785 207.959 299.56 139.274 316.243C70.5883 332.926 41.3685 398.9 81.9726 419.754C122.577 440.608 222 478.524 222 419.754C222 372.738 222 242.432 222 183.157C219.091 129.948 175.78 30.8091 25.8099 59.9288C-161.652 96.3284 -30.3529 119.837 25.8099 141.07C81.9726 162.303 171.529 204.769 126.751 260.506C81.9726 316.243 101.326 362.501 139.274 373.496C177.222 384.492 170.012 464.495 70.5883 462.979C-28.835 461.462 -42.8757 393.015 -42.8757 373.496C-42.8757 238.288 11.7692 293 11.7692 240.506C11.7692 208.05 11.7692 237.336 11.7692 229.5Z");
+  offset-rotate: auto;
+
+  animation: koiSwim 16000ms linear infinite;
+}
+
+/* white koi variant */
+.koiFishB .koiCoil{
+  background-color: rgba(255, 0, 0, 0.85);
+  box-shadow: calc(var(--coilSize) / -2) calc(var(--coilSize) / -10) 0 rgba(255, 255, 255, 0.75) inset;
+}
+
+/* head + eyes */
+.koiFish .koiCoil:nth-of-type(1){
+  width: calc(var(--coilSize) * 1.35);
+  height: calc(var(--coilSize) * 1.35);
+}
+.koiFish .koiCoil:nth-of-type(1)::before,
+.koiFish .koiCoil:nth-of-type(1)::after{
+  content:"";
+  position:absolute;
+  top: 32%;
+  width: calc(var(--coilSize) * .18);
+  height: calc(var(--coilSize) * .18);
+  border-radius: 50%;
+  background: rgba(0,0,0,.75);
+}
+.koiFish .koiCoil:nth-of-type(1)::before{ left: 26%; }
+.koiFish .koiCoil:nth-of-type(1)::after{ right: 26%; }
+
+/* simple fin flap */
+.koiFish .koiCoil:nth-of-type(7)::before,
+.koiFish .koiCoil:nth-of-type(7)::after{
+  content:"";
+  position:absolute;
+  width: calc(var(--coilSize) * 1.0);
+  height: calc(var(--coilSize) * .34);
+  top: 32%;
+  left: -95%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  transform-origin: 100% 50%;
+  animation: koiFin 420ms ease-in-out infinite alternate;
+  opacity: .85;
+}
+.koiFish .koiCoil:nth-of-type(7)::after{
+  top: 58%;
+  transform: scaleY(-1);
+  opacity: .75;
+}
+
+@keyframes koiFin{
+  0%{ transform: rotate(18deg); }
+  100%{ transform: rotate(-22deg); }
+}
+
+/* body thickness shaping + chasing delay */
+.koiFish .koiCoil:nth-of-type(14){ transform: scale(1.2);  animation-delay: calc(var(--delayCount)*1); }
+.koiFish .koiCoil:nth-of-type(13){ transform: scale(1.35); animation-delay: calc(var(--delayCount)*2); }
+.koiFish .koiCoil:nth-of-type(12){ transform: scale(1.55); animation-delay: calc(var(--delayCount)*3); }
+.koiFish .koiCoil:nth-of-type(11){ transform: scale(1.75); animation-delay: calc(var(--delayCount)*4); }
+.koiFish .koiCoil:nth-of-type(10){ transform: scale(1.9);  animation-delay: calc(var(--delayCount)*5); }
+.koiFish .koiCoil:nth-of-type(9) { transform: scale(2);    animation-delay: calc(var(--delayCount)*6); }
+.koiFish .koiCoil:nth-of-type(8) { transform: scale(2);    animation-delay: calc(var(--delayCount)*7); }
+.koiFish .koiCoil:nth-of-type(7) { transform: scale(2);    animation-delay: calc(var(--delayCount)*8); }
+.koiFish .koiCoil:nth-of-type(6) { transform: scale(1.9);  animation-delay: calc(var(--delayCount)*9); }
+.koiFish .koiCoil:nth-of-type(5) { transform: scale(1.75); animation-delay: calc(var(--delayCount)*10); }
+.koiFish .koiCoil:nth-of-type(4) { transform: scale(1.55); animation-delay: calc(var(--delayCount)*11); }
+.koiFish .koiCoil:nth-of-type(3) { transform: scale(1.35); animation-delay: calc(var(--delayCount)*12); }
+.koiFish .koiCoil:nth-of-type(2) { transform: scale(1.2);  animation-delay: calc(var(--delayCount)*13); }
+.koiFish .koiCoil:nth-of-type(1) { animation-delay: calc(var(--delayCount)*14); }
+
+/* motion */
+@keyframes koiSwim{
+  0%{ offset-distance: 0%; }
+  100%{ offset-distance: 100%; }
+}
