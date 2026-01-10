@@ -515,7 +515,7 @@ body{
 /* Truck (your style, adapted to monochrome) */
 .loop-wrapper{
   position: relative;
-  width: 360px;
+  width: 760px;
   height: 56px;
   overflow: hidden;
   border-bottom: 2px solid var(--ring);
