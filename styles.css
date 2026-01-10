@@ -160,6 +160,36 @@ body{
 
 .hr{ border:0; border-top:1px solid var(--line); margin: 12px 0; }
 
+.certBlock{
+  margin-top: 8px;
+}
+
+.certGroup{
+  margin: 14px 0 6px;
+  font-size: 14px;
+  font-weight: 1000;
+  letter-spacing: .3px;
+}
+
+.certList{
+  margin: 0 0 10px;
+  padding-left: 18px;
+}
+
+.certList li{
+  margin: 6px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.certId{
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+
 /* Home grid - larger */
 .homeGrid{
   display:grid;
@@ -408,13 +438,6 @@ body{
   content: "⚡";
   transform: translate(-50%, -50%) rotate(180deg) translateY(-280px) rotate(-180deg);
 }
-
-
-
-
-
-
-
 @keyframes kineticSpin{ to{ transform: rotate(360deg); } }
 
 /* small portal circle */
